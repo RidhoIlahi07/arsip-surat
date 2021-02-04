@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,7 +49,7 @@ include "login/ceksession.php";
           <div class="">
             <div class="page-title">
               <div class="title_right">
-                <h2>Pengguna </h2>
+                <h2>Pengguna  </h2>
               </div>
             </div>
 
@@ -62,11 +59,11 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Surat Masuk</small></h2>
+                    <h2>Surat Keputusan</small></h2>
                     <div class="clearfix"></div>
                   </div>
 
-                  <form action="proses/proses_exportsuratmasuk.php"  name="download_suratkeluar" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                  <form action="proses/proses_exportSK.php"  name="download_suratkeluar" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="col-md-2 col-sm-2 col-xs-6">
                           <select name="bulan" class="select2_single form-control" tabindex="-1">
                             <option>Pilih Bulan</option>
@@ -87,7 +84,7 @@ include "login/ceksession.php";
                         <div class="col-md-2 col-sm-2 col-xs-6">
                           <input type="text" id="tahun" name="tahun" required="required"  placeholder="Masukkan Tahun" class="form-control col-md-7 col-xs-12">
                         </div>
-                  <button type="submit" class="btn btn-primary"><i class="fa fa-download"></i> Unduh Laporan Surat Keluar</button></a>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-download"></i> Unduh Laporan Surat Keputusan</button></a>
                   <a href="input_sk.php"><button type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Surat Keputusan</button></a>
                   </form>
                   <div class="x_content">
@@ -128,7 +125,7 @@ include "login/ceksession.php";
                                 <td>	'. $data['keputusan_sk'].'		</td> 
                                 <td>	'. $data['keterangan_sk'].'		</td> 
                                 <td style="text-align:center;">
-                                  <a href=detail-sk.php?id_sk='.$data['id_sk'].'>Lihat</a>
+                                  <a href=datapenerimask.php?id_sk='.$data['id_sk'].'>Lihat</a>
                                 </td>
                                 <td style="text-align:center;">
                                   <a href=detail-sk.php?id_sk='.$data['id_sk'].'><button type="button" title="Detail" class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i></button></a>

@@ -15,7 +15,7 @@ $excelku->getProperties()->setCreator("Ridho")
 // Mengambil data dari tabel
                     $bulan=$_POST['bulan'];
                     $tahun=$_POST['tahun'];	
-                    $sql1  		= "SELECT * FROM surat_masuk WHERE MONTH(tgl_suratmasuk)='$bulan' AND YEAR(tgl_suratmasuk) = '$tahun'";                        
+                    $sql1  		= "SELECT * FROM surat_keluar WHERE MONTH(tgl_suratkeluar)='$bulan' AND YEAR(tgl_suratkeluar) = '$tahun'";                        
                     $query1  	= mysqli_query($db, $sql1);
 
                     if ($bulan == '01') {
@@ -43,7 +43,7 @@ $excelku->getProperties()->setCreator("Ridho")
                     } elseif ($bulan == '12') {
                       $bulan = "DESEMBER";
                     }
-                $nama_file = 'SURAT MASUK  '.$_SESSION['nama'].'-'.$bulan.'-'.$tahun;
+                $nama_file = 'SURAT KELUAR '.$_SESSION['nama'].'-'.$bulan.'-'.$tahun;
 
 // Mergecell, menyatukan beberapa kolom
 $excelku->getActiveSheet()->mergeCells('A2:H2');
@@ -55,7 +55,7 @@ $excelku->getActiveSheet()->setCellValue('A4', "BAGIAN ".$_SESSION['nama']."");
 $excelku->getActiveSheet()->mergeCells('A5:H5');
 $excelku->getActiveSheet()->setCellValue('A5', "Jl. JURIT BARU, PRINGGASELA LOMBOK TIMUR");
 $excelku->getActiveSheet()->mergeCells('A6:H6');
-$excelku->getActiveSheet()->setCellValue('A6', "DATA SURAT MASUK BULAN $bulan TAHUN $tahun");
+$excelku->getActiveSheet()->setCellValue('A6', "DATA SURAT KELUAR BULAN $bulan TAHUN $tahun");
 $excelku->getActiveSheet()->getStyle('A2:H6')->getFont()->setName('Arial');
 $excelku->getActiveSheet()->getStyle('A2:H6')->getFont()->setSize(14);
 $excelku->getActiveSheet()->getStyle('A2:H6')->getFont()->setBold(true);
@@ -65,13 +65,13 @@ $excelku->getActiveSheet()->getStyle('A8:H8')->getBorders()->getAllBorders()->se
 
 // Buat Kolom judul tabel
 $SI = $excelku->setActiveSheetIndex(0);
- $SI->setCellValue('A8', "No");
- $SI->setCellValue('B8', "TANGGAL KELUAR");
- $SI->setCellValue('C8', "NOMOR SURAT");
- $SI->setCellValue('D8', "ISI");
- $SI->setCellValue('E8', "PERIHAL");
- $SI->setCellValue('F8', "PENERIMA SURAT");
- $SI->setCellValue('G8', "PENGIRIM SURAT");
+$SI->setCellValue('A8', "No");
+$SI->setCellValue('B8', "TANGGAL KELUAR");
+$SI->setCellValue('C8', "NOMOR SURAT");
+$SI->setCellValue('D8', "ISI");
+$SI->setCellValue('E8', "PERIHAL");
+$SI->setCellValue('F8', "PENERIMA SURAT");
+$SI->setCellValue('G8', "PENGIRIM SURAT");
 
 //Mengeset Syle nya
 $headerStylenya = new PHPExcel_Style();
@@ -113,12 +113,12 @@ $no     = 1;
 
 while ($data = $query1->fetch_assoc()) {
   $SI->setCellValue("A".$baris,$no++); //mengisi data untuk nomor urut
-  $SI->setCellValue("B".$baris,$data['tgl_suratmasuk']); 
-  $SI->setCellValue("C".$baris,$data['no_suratmasuk']); 
-  $SI->setCellValue("D".$baris,$data['isi_suratmasuk']); 
-  $SI->setCellValue("E".$baris,$data['perihal_suratmasuk']); 
-  $SI->setCellValue("F".$baris,$data['penerima_suratmasuk']); 
-  $SI->setCellValue("G".$baris,$data['pengirim_suratmasuk']); 
+  $SI->setCellValue("B".$baris,$data['tgl_suratkeluar']); 
+  $SI->setCellValue("C".$baris,$data['no_suratkeluar']); 
+  $SI->setCellValue("D".$baris,$data['isi_suratkeluar']); 
+  $SI->setCellValue("E".$baris,$data['perihal_suratkeluar']); 
+  $SI->setCellValue("F".$baris,$data['penerima_suratkeluar']); 
+  $SI->setCellValue("G".$baris,$data['pengirim_suratkeluar']); 
   $baris++; //looping untuk barisnya
   
     // Set lebar kolom
@@ -139,7 +139,7 @@ while ($data = $query1->fetch_assoc()) {
 }
 
 //Memberi nama sheet
-$excelku->getActiveSheet()->setTitle('DataSuratMasuk');
+$excelku->getActiveSheet()->setTitle('DataSuratKeluar');
 
 $excelku->setActiveSheetIndex(0);
 

@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -72,7 +69,7 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Surat Surat Keputusan ><small>Detail Surat Keputusan</small></h2>
+                    <h2>Surat Keputusan ><small>Detail Surat Keputusan</small></h2>
                     <div class="clearfix"></div>
                   </div>
                      <?php include '../koneksi/koneksi.php';

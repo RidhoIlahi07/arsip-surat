@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@ include "login/ceksession.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat Desa Jurit Baru</title>
+    <title>Kelola Admin</title>
 
     <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -80,7 +77,7 @@ include "login/ceksession.php";
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th width="15%">Id Admin</th>
+                          <th width="5%">No</th>
                           <th width="10%">Nama </th>
                           <th width="15%">Username Admin</th>
                           <th width="20%">Foto</th>
@@ -90,9 +87,10 @@ include "login/ceksession.php";
                       
                       <tbody>
                             <?php
+                            $no=1;
                             while($data = mysqli_fetch_array($query1)){
                               echo'<tr>
-                              <td>	'. $data['id_admin'].'		</td>
+                              <td>	'. $no.'		</td>
                               <td>	'. $data['nama_admin'].'	</td>
                               <td>	'. $data['username_admin'].'  		</td>
                               <td>	'. $data['foto_admin'].'		</td> 
@@ -101,6 +99,7 @@ include "login/ceksession.php";
                               <a href=editadmin.php?id_admin='.$data['id_admin'].'><button type="button" title="Edit" class="btn btn-success btn-xs"><i class="fa  fa-edit"></i></button></a>
                               <a onclick="return konfirmasi()" href="proses/proses_hapusadmin.php?id_admin='.$data['id_admin'].'"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
                               </tr>';
+                              $no++;
                             }
                             ?>
                       </tbody>

@@ -1,7 +1,4 @@
-<?php
-session_start();
-include "koneksi/ceksession.php";
-?>
+<?php session_start(); include "koneksi/ceksession.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,7 +48,7 @@ include "koneksi/ceksession.php";
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="admin/login"><i class="fa fa-sign-out pull-right"></i> Admin</a></li> 
-                    <li><a href="pengguna/login"><i class="fa fa-sign-out pull-right"></i> Bagian</a></li>
+                    <li><a href="pengguna/login"><i class="fa fa-sign-out pull-right"></i> Pengguna</a></li>
                   </ul>
                 </li>
               </ul>

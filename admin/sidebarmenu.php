@@ -16,9 +16,6 @@
             <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="images/<?php echo $data['foto_admin']; ?>" height="55" width="55" alt="" class="img-circle profile_img">
-                <h3><?php
-                  echo $sql;
-                ?></h3>
               </div>
               <div class="profile_info">
                 <span>Selamat Datang,</span>
@@ -34,7 +31,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="dataAdmin.php"><i class="fa  fa-user"></i>Admin</a></li>
-                  <li><a href="dataPengguna.php"><i class="fa fa-send"></i>Pengguna</a></li>
+                  <li><a href="dataPengguna.php"><i class="fa fa-user"></i>Pengguna</a></li>
                 </ul> 
               </div>
             </div>

@@ -32,8 +32,8 @@
                 <ul class="nav side-menu">
                   <li><a href="datasuratmasuk.php"><i class="fa  fa-inbox"></i>Surat Masuk</a></li>
                   <li><a href="datasuratkeluar.php"><i class="fa fa-send"></i>Surat Keluar</a></li>
-                  <li><a href="datasuratSK.php"><i class="fa fa-laptop"></i>Surat Keputusan</a></li>
-                  <li><a href="notulen.php"><i class="fa fa-laptop"></i>Notulen Rapat</a></li>
+                  <li><a href="datasuratSK.php"><i class="fa fa-file"></i>Surat Keputusan</a></li>
+                  <li><a href="notulen.php"><i class="fa fa-book"></i>Notulen Rapat</a></li>
                 </ul>
               </div>
             </div>

@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@ include "login/ceksession.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat Desa Jurit Baru</title>
+    <title>Beranda Admin</title>
 
     <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -84,10 +81,10 @@ include "login/ceksession.php";
                           ?>
                       <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="tile-stats">
-                          <div class="icon"><i class="fa fa-send"></i>
+                          <div class="icon"><i class="fa fa-user"></i>
                           </div>
                           <div class="count"><?php echo "$jumlah2" ?></div>
-                          <h3>Pengelola</h3>
+                          <h3>Pengguna</h3>
                         </div>
                       </div>
 

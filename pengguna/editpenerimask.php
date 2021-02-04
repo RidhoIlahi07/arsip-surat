@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  
-    <title>Arsip Surat Desa Jurit Baru </title>
+    <title>Arsip Surat Desa Jurit Baru</title>
 
     <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Pengguna</h3>
+                <h3>Penerima Surat Keputusan</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -66,43 +66,44 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Surat Keputusan ><small>Edit Surat Keputusan</small></h2>
+                    <h2>Penerima Surat Keputusan ><small>Edit Penerima Surat Keputusan</small></h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <br />
-                    <form action="proses/proses_editsurat.php" method="post" enctype="multipart/form-data" id="demo-form2" name="formupdate" data-parsley-validate class="form-horizontal form-label-left">
+                    <form action="proses/proses_editsurat.php" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <?php include '../koneksi/koneksi.php';
-                            $id			= mysqli_real_escape_string($db,$_GET['id_sk']);
-                            $sql  		= "SELECT * FROM surat_sk where id_sk='".$id."'";                        
+                            $id			= mysqli_real_escape_string($db,$_GET['id_penerima_sk']);
+                            $sql  		= "SELECT * FROM penerima_sk where id_penerima_sk='".$id."'";                        
                             $query  	= mysqli_query($db, $sql);
                             $data 		= mysqli_fetch_array($query);
-                            $tgl_sk = $data['tanggal_sk'];
-                            $tgl_sk = date('m-d-Y H:i:s', strtotime($tgl_sk));
-                            $tgl_sk = $data['tanggal_sk'];
-                            $tgl_sk = date('m-d-Y', strtotime($tgl_sk));
+                            $tgl        = $data['tgl_penerimask'];
+                            $tgl        = date('m-d-Y H:i:s', strtotime($tgl));
+                            $tgl        = $data['tgl_penerimask'];
+                            $tgl        = date('m-d-Y', strtotime($tgl));
                             ?>
-                      <input type=hidden name="id_sk" value="<?php echo $id;?>">
+                            
+                      <input type=hidden name="id_penerima_sk" value="<?php echo $id;?>">
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">No Surat Keputusan <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input value="<?php echo $data['no_sk'];?>" type="text" id="no_sk" name="no_sk" required="required"  placeholder="Masukkan Nomor Surat" class="form-control col-md-7 col-xs-12">
+                          <input value="<?php echo $data['nama_penerimask'];?>" type="text" id="nama_penerimask" name="nama_penerimask" required="required"  placeholder="Masukkan Nama" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tentang <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tempat Lahir<span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input value="<?php echo $data['tentang_sk'];?>" type="text" id="tentang_sk" name="tentang_sk" required="required" placeholder="Masukkan tentang surat " class="form-control col-md-7 col-xs-12">
+                            <input value="<?php echo $data['tl_penerimask'];?>" type="text" id="tl_penerimask" name="tl_penerimask" required="required" placeholder="Masukkan Tempat Lahir " class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal SK <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Lahir <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <div class='input-group date' id='myDatepicker4'>
-                                <input value="<?php echo $tgl_sk;?>" type='text' id="tanggal_sk" name="tanggal_sk" required="required" class="form-control" required="required" readonly="readonly" />
+                                <input value="<?php echo "$tgl" ?>"type='text' id="tgl_penerimask" name="tgl_penerimask" required="required" class="form-control" required="required" readonly="readonly" />
                                 <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -110,31 +111,55 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> Penerbit Surat Keputusan <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pendidikan Terakhir<span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input value="<?php echo $data['penerbit_sk'];?>"type="text" id="penerbit_sk" name="penerbit_sk" required="required" placeholder="Masukkan Penerbit " class="form-control col-md-7 col-xs-12">
+                          <input value="<?php echo $data['pddk_terakhir'];?>" type="text" id="pddk_terakhir" name="pddk_terakhir" required="required" placeholder="Masukkan pendidikan terkahir" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> Keputusan  <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> Jabatan Baru  <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea  name="keputusan_sk" id="keputusan_sk" cols="30" rows="10"required="required" placeholder="Masukkan Keputusan" class="form-control col-md-7 col-xs-12"><?php echo $data['keputusan_sk'];?></textarea>
+                            <input value="<?php echo $data['jbtn_baru'];?>" type="text" id="jbtn_baru" name="jbtn_baru" required="required" placeholder="Masukkan Jabatan Baru" class="form-control col-md-7 col-xs-12">  
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Jabatan Lama <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input value="<?php echo $data['jbtn_lama'];?>" type="text" id="jbtn_lama" name="jbtn_lama" required="required" placeholder="Masukkan Jabatan Lama" class="form-control col-md-7 col-xs-12">  
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> Masa Akhir SK  <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input value="<?php echo $data['akhir_penerimask'];?>" type="text" id="akhir_penerimask" name="akhir_penerimask" required="required" placeholder="Masukkan masa akhir sk" class="form-control col-md-7 col-xs-12">  
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Keterangan <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea  name="keterangan_sk" id="keterangan_sk" cols="30" rows="10"required="required" placeholder="Masukkan Keputusan" class="form-control col-md-7 col-xs-12"><?php echo $data['keterangan_sk'];?></textarea>
+                            <textarea  name="ket_penerimask" id="ket_penerimask" cols="30" rows="10"required="required" placeholder="Masukkan Keterangan" class="form-control col-md-7 col-xs-12"><?php echo $data['ket_penerimask'];?></textarea>
+                        </div>
+                      </div>    
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">ID Surat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input value="<?php echo $data['id_sk'];?>" type= id="id_sk" name="id_sk" required="required" placeholder="Masukkan Id Surat" class="form-control col-md-7 col-xs-12" readonly="readonly">  
                         </div>
                       </div>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <a href="datasuratSK.php" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span> Batal</a>
-                          <button type="submit" name="input" value="Simpan" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Simpan</button>
+                        <?php
+                            echo'<a href=datapenerimask.php?id_sk='.$data['id_sk'].'><button type="button" class="btn btn-success pull-left">Batal</button></a>';
+                        ?>
+                          <button type="submit" name="update" value="Update" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Simpan</button>
                         </div>
                       </div>
 

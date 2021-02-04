@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@ include "login/ceksession.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat Kota Samarinda </title>
+    <title>Profil Pengguna</title>
 
      <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -62,7 +59,7 @@ include "login/ceksession.php";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Bagian</h3>
+                <h3>Pengguna</h3>
               </div>
             </div>
             
@@ -72,7 +69,7 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Bagian ><small>Profil Bagian</small></h2>
+                    <h2>Profil ><small>Profil Pengguna</small></h2>
                     <div class="clearfix"></div>
                   </div>
                           <?php include '../koneksi/koneksi.php';
@@ -96,7 +93,7 @@ include "login/ceksession.php";
                     <div class="col-md-9 col-sm-9 col-xs-12">
                       <div class="profile_title">
                         <div class="col-md-6">
-                          <h2>Detail Bagian </h2>
+                          <h2>Detail Pengguna </h2>
                         </div>
                       </div>
                       <div class="x_content">
@@ -108,11 +105,11 @@ include "login/ceksession.php";
                           <td><?php echo $data['id_pengguna']?></td>
                         </tr>
                         <tr>
-                          <td>Nama Bagian</td>
+                          <td>Nama Pengguna</td>
                           <td><?php echo $data['nama_pengguna']?></td>
                         </tr>
                         <tr>
-                          <td>Username Admin Bagian</td>
+                          <td>Username Pengguna</td>
                           <td><?php echo $data['username_pengguna']?></td>
                         </tr>
                         <tr>

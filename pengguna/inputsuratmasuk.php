@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -61,7 +58,7 @@ include "login/ceksession.php";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Admin</h3>
+                <h3>Pengguna</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -69,23 +66,23 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Admin</h2>
+                    <h2>Tambah Surat Masuk</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <br />
                     <form action="proses/proses_inputsurat.php"  name="formpengguna" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Masuk <span class="required">*</span>
-                        </label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                        <div class='input-group date' id='myDatepicker4'>
-                            <input  type='text' id="tgl_suratmasuk" name="tgl_suratmasuk" required="required" class="form-control" required="required" readonly="readonly" />
-                            <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                        </div>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Masuk <span class="required">*</span>
+                          </label>
+                          <div class="col-md-9 col-sm-9 col-xs-12">
+                          <div class='input-group date' id='myDatepicker4'>
+                              <input type='text' id="tgl_suratmasuk" name="tgl_suratmasuk" required="required" class="form-control" required="required" readonly="readonly" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                          </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">No Surat <span class="required">*</span>

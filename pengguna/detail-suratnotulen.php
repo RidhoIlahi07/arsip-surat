@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,7 +59,7 @@ include "login/ceksession.php";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Surat Masuk</h3>
+                <h3>Pengguna</h3>
               </div>
             </div>
             

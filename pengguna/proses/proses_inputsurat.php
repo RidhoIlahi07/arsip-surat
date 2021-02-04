@@ -15,14 +15,14 @@
 			date_default_timezone_set('Asia/Jakarta'); 
 			$tanggal_entry  			= date("Y-m-d H:i:s");
 			$thnNow 					= date("Y");
-			$tgl_keluar                 = date('Y-m-d H:i:s', strtotime($tanggal_notulen));
+			$tgl			            = date('Y-m-d H:i:s', strtotime($tanggal_notulen));
 			
 			$sql = "INSERT INTO notulen(no_suratnotulen,pemimpin_notulen, tanggal_notulen, tempat_notulen, agenda_notulen, pengirim_notulen,penerima_notulen,hasil_notulen)
-					values ('$no_suratnotulen','$pemimpin_notulen', '$tanggal_notulen', '$tempat_notulen', '$agenda_notulen','$pengirim_notulen','$penerima_notulen','$hasil_notulen')";
+					values ('$no_suratnotulen','$pemimpin_notulen', '$tgl', '$tempat_notulen', '$agenda_notulen','$pengirim_notulen','$penerima_notulen','$hasil_notulen')";
 			$execute = mysqli_query($db, $sql);
 			
 			echo "<Center><h2><br>Terima Kasih<br>Telah Didaftarkan ke Sistem </h2></center>
-				<meta http-equiv='refresh' content='2;url=../notulen.php'>";
+			<meta http-equiv='refresh' content='2;url=../../notulen.php'>";
 	}elseif (strlen(isset($_POST['tgl_suratmasuk']))>0) {
 		$tgl_suratmasuk			    = mysqli_real_escape_string($db,$_POST['tgl_suratmasuk']);
 		$no_suratmasuk		        = mysqli_real_escape_string($db,$_POST['no_suratmasuk']);
@@ -81,6 +81,30 @@
 			
 			echo "<Center><h2><br>Terima Kasih<br>Telah Didaftarkan ke Sistem, </h2></center>
 				<meta http-equiv='refresh' content='2;url=../datasuratSK.php'>";
+	}elseif (strlen(isset($_POST['nama_penerimask']))>0) {
+		$nama			    	= mysqli_real_escape_string($db,$_POST['nama_penerimask']);
+		$tempat			        = mysqli_real_escape_string($db,$_POST['tl_penerimask']);
+		$tanggal	 	        = mysqli_real_escape_string($db,$_POST['tgl_penerimask']);
+		$pendidikan	 		    = mysqli_real_escape_string($db,$_POST['pddk_terakhir']);
+		$jbtn_baru		       	= mysqli_real_escape_string($db,$_POST['jbtn_baru']);
+		$jbtn_lama				= mysqli_real_escape_string($db,$_POST['jbtn_lama']);
+		$akhir					= mysqli_real_escape_string($db,$_POST['akhir_penerimask']);
+		$keterangan				= mysqli_real_escape_string($db,$_POST['ket_penerimask']);
+		$id_sk					= mysqli_real_escape_string($db,$_POST['id_sk']);
+		
+		
+			date_default_timezone_set('Asia/Jakarta'); 
+			$tanggal_entry  			= date("Y-m-d H:i:s");
+			$thnNow 					= date("Y");
+			$tgl_sk		                 = date('Y-m-d H:i:s', strtotime($tanggal));
+			
+			$sql = "INSERT INTO penerima_sk(nama_penerimask, tl_penerimask, tgl_penerimask, pddk_terakhir, jbtn_baru,jbtn_lama,akhir_penerimask,ket_penerimask,id_sk)
+					values ('$nama', '$tempat', '$tgl_sk', '$pendidikan','$jbtn_baru','$jbtn_lama','$akhir','$keterangan','$id_sk')";
+			$execute = mysqli_query($db, $sql);
+			
+			echo "<Center><h2><br>Terima Kasih<br>Telah Didaftarkan ke Sistem, $sql </h2></center>
+			<meta http-equiv='refresh' content='2;url=../datapenerimask.php?id_sk=$id_sk'>";
 	}
 ?>
 	
+

@@ -16,9 +16,14 @@
         $data 		= mysqli_fetch_array($query);
         $total		= mysqli_num_rows($query);
 
+            date_default_timezone_set('Asia/Jakarta'); 
+			$tanggal_entry  			= date("Y-m-d H:i:s");
+			$thnNow 					= date("Y");
+			$tgl_masuk                 = date('Y-m-d H:i:s', strtotime($tgl_surat));
+
         if ($total>0){
             $sql=" UPDATE surat_masuk set 
-                        tgl_suratmasuk 		= '$tgl_surat',
+                        tgl_suratmasuk 		= '$tgl_masuk',
                         no_suratmasuk		= '$no_surat',
                         isi_suratmasuk		= '$isi_surat',	
                         perihal_suratmasuk	= '$perihal_surat',
@@ -47,9 +52,14 @@
         $data 		= mysqli_fetch_array($query);
         $total		= mysqli_num_rows($query);
 
+        date_default_timezone_set('Asia/Jakarta'); 
+        $tanggal_entry  			= date("Y-m-d H:i:s");
+        $thnNow 					= date("Y");
+        $tgl_keluar                 = date('Y-m-d H:i:s', strtotime($tgl_surat));
+
         if ($total>0){
             $sql=" UPDATE surat_keluar set 
-                        tgl_suratkeluar 	= '$tgl_surat',
+                        tgl_suratkeluar 	= '$tgl_keluar',
                         no_suratkeluar		= '$no_surat',
                         isi_suratkeluar		= '$isi_surat',	
                         perihal_suratkeluar	= '$perihal_surat',
@@ -80,11 +90,16 @@
         $data 		= mysqli_fetch_array($query);
         $total		= mysqli_num_rows($query);
 
+        date_default_timezone_set('Asia/Jakarta'); 
+        $tanggal_entry  			= date("Y-m-d H:i:s");
+        $thnNow 					= date("Y");
+        $tgl_notulen		    = date('Y-m-d H:i:s', strtotime($tgl));
+
         if ($total>0){
             $sql=" UPDATE notulen set 
 						no_suratnotulen		= '$no_surat',
 						pemimpin_notulen	= '$pemimpin',
-                        tanggal_notulen 	= '$tgl',
+                        tanggal_notulen 	= '$tgl_notulen',
                         tempat_notulen		= '$tempat',
                         agenda_notulen		= '$agenda',
                         pengirim_notulen	= '$pengirim',
@@ -169,6 +184,49 @@
         
         }
     
+    }elseif (strlen(isset($_POST['id_penerima_sk']))>0) {
+        $id 				    = mysqli_real_escape_string($db,$_POST['id_penerima_sk']);
+        $nama		            = mysqli_real_escape_string($db,$_POST['nama_penerimask']);
+        $tempat	            	= mysqli_real_escape_string($db,$_POST['tl_penerimask']);
+        $tgl					= mysqli_real_escape_string($db,$_POST['tgl_penerimask']);
+        $pddk		 	        = mysqli_real_escape_string($db,$_POST['pddk_terakhir']);
+        $jbtn_baru		 	    = mysqli_real_escape_string($db,$_POST['jbtn_baru']);
+        $jbtn_lama			    = mysqli_real_escape_string($db,$_POST['jbtn_lama']);
+        $akhir			        = mysqli_real_escape_string($db,$_POST['akhir_penerimask']);
+        $keterangan			    = mysqli_real_escape_string($db,$_POST['ket_penerimask']);
+        $id_sk			        = mysqli_real_escape_string($db,$_POST['id_sk']);
+        
+        $sql  		= "SELECT * FROM penerima_sk where id_penerima_sk='".$id."'";                        
+        $query  	= mysqli_query($db, $sql);
+        $data 		= mysqli_fetch_array($query);
+        $total		= mysqli_num_rows($query);
+
+        date_default_timezone_set('Asia/Jakarta'); 
+        $tanggal_entry  			= date("Y-m-d H:i:s");
+        $thnNow 					= date("Y");
+        $tgl_penerima_sk		                 = date('Y-m-d H:i:s', strtotime($tgl));
+
+        if ($total>0){
+            $sql=" UPDATE penerima_sk set 
+						nama_penerimask		= '$nama',
+						tl_penerimask	    = '$tempat',
+                        tgl_penerimask 	    = '$tgl_penerima_sk',
+                        pddk_terakhir		= '$pddk',
+                        jbtn_baru	        = '$jbtn_baru',
+                        jbtn_lama	        = '$jbtn_lama',
+                        akhir_penerimask	= '$akhir',
+                        ket_penerimask	    = '$keterangan',
+                        id_sk	            = '$id_sk'
+                where id_penerima_sk = $id";
+        
+            $execute=mysqli_query($db,$sql);
+			echo "<Center><h2><br>Terimakasih Data Penerima SK Telah di Ubah, $sql</h2></center>
+            <meta http-equiv='refresh' content='2;url=../datapenerimask.php?id_sk=$id_sk''>";
+		
+		}else{
+			echo "<Center><h2><br>error boy </h2></center>";
+			echo "<Center><h2><br>data, $id_penerima_sk</h2></center>";
+        }
     }elseif (strlen(isset($_POST['id_sk']))>0) {
         $id 				        = mysqli_real_escape_string($db,$_POST['id_sk']);
         $no_surat		            = mysqli_real_escape_string($db,$_POST['no_sk']);
@@ -183,11 +241,16 @@
         $data 		= mysqli_fetch_array($query);
         $total		= mysqli_num_rows($query);
 
+        date_default_timezone_set('Asia/Jakarta'); 
+        $tanggal_entry  			= date("Y-m-d H:i:s");
+        $thnNow 					= date("Y");
+        $tgl_sk		                 = date('Y-m-d H:i:s', strtotime($tgl));
+
         if ($total>0){
             $sql=" UPDATE surat_sk set 
 						no_sk		    = '$no_surat',
 						tentang_sk	    = '$tentang',
-                        tanggal_sk 	    = '$tgl',
+                        tanggal_sk 	    = '$tgl_sk',
                         penerbit_sk		= '$penerbit',
                         keputusan_sk	= '$keputusan',
                         keterangan_sk	= '$keterangan'

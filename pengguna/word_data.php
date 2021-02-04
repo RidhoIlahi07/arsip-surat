@@ -1,8 +1,4 @@
-<?php
-session_start();
-include "login/ceksession.php";
-
-?>
+<?php session_start(); include "login/ceksession.php";  ?>
 
 <!DOCTYPE html>
 <html>

@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@ include "login/ceksession.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat Desa Jurit Baru</title>
+    <title>Kelola Pengguna</title>
 
     <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +49,7 @@ include "login/ceksession.php";
           <div class="">
             <div class="page-title">
               <div class="title_right">
-                <h2>Admin </h2>
+                <h2>Pengguna </h2>
               </div>
             </div>
 
@@ -62,10 +59,10 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Admin</small></h2>
+                    <h2>Pengguna</small></h2>
                     <div class="clearfix"></div>
                   </div>
-                  <a href="inputpengguna.php"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Admin</button></a>
+                  <a href="inputpengguna.php"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pengguna</button></a>
                   <div class="x_content">
                   <div class="x_content">
                              <?php
@@ -80,7 +77,7 @@ include "login/ceksession.php";
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th width="15%">Id </th>
+                          <th width="5%">No </th>
                           <th width="10%">Nama </th>
                           <th width="15%">Full Nama</th>
                           <th width="15%">Username</th>
@@ -91,9 +88,10 @@ include "login/ceksession.php";
                       
                       <tbody>
                             <?php
+                            $no=1;
                             while($data = mysqli_fetch_array($query1)){
                               echo'<tr>
-                              <td>	'. $data['id_pengguna'].'		</td>
+                              <td>	'. $no.'		</td>
                               <td>	'. $data['nama_pengguna'].'	</td>
                               <td>	'. $data['full_name'].'  		</td>
                               <td>	'. $data['username_pengguna'].'		</td> 
@@ -103,6 +101,7 @@ include "login/ceksession.php";
                               <a href=editPengguna.php?id_pengguna='.$data['id_pengguna'].'><button type="button" title="Edit" class="btn btn-success btn-xs"><i class="fa  fa-edit"></i></button></a>
                               <a onclick="return konfirmasi()" href="proses/proses_hapusPengguna.php?id_pengguna='.$data['id_pengguna'].'"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
                               </tr>';
+                              $no++;
                             }
                             ?>
                       </tbody>

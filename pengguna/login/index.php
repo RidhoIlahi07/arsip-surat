@@ -1,8 +1,5 @@
+<?php	session_start();	include "ceksessionn.php"; ?>
 <!DOCTYPE html>
-<?php
-	session_start();
-	include "ceksessionn.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arsip Surat Desa Jurit Baru</title>
+    <title>Login Pengguna</title>
 
     <!-- Bootstrap -->
     <link href="../../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +32,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form action="proses_login.php" id="login" name="login" method="post">
-              <h1>Login Bagian</h1>
+              <h1>Login Pengguna</h1>
               <div class="form-group has-feedback">
                 <input type="text" id="username" name="username_pengguna" class="form-control" autocomplete="off" maxlength="50" placeholder="Username" required="username" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -53,8 +50,8 @@
 
               <div class="separator">
                 <div>
-                  <h2><i class="fa fa-institution"></i> PEMKOT SAMARINDA</h2>
-                  <p>©2017 ILMU KOMPUTER UNMUL</p>
+                  <h2><i class="fa fa-institution"></i> DESA JURIT BARU</h2>
+                  <p>©2021 KKN UNRAM 2021 TEMA DESA DIGITAL</p>
                 </div>
               </div>
             </form>

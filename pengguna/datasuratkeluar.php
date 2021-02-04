@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,11 +59,11 @@ include "login/ceksession.php";
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Surat Masuk</small></h2>
+                    <h2>Surat Keluar</small></h2>
                     <div class="clearfix"></div>
                   </div>
 
-                  <form action="proses/proses_exportsuratmasuk.php" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                  <form action="proses/proses_exportsuratkeluar.php" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="col-md-2 col-sm-2 col-xs-6">
                           <select name="bulan" class="select2_single form-control" tabindex="-1">
                             <option>Pilih Bulan</option>
@@ -88,7 +85,7 @@ include "login/ceksession.php";
                           <input type="text" id="tahun" name="tahun" required="required"  placeholder="Masukkan Tahun" class="form-control col-md-7 col-xs-12">
                         </div>
                   <button type="submit" class="btn btn-primary"><i class="fa fa-download"></i> Unduh Laporan Surat Keluar</button></a>
-                    <a href="inputsuratkeluar.php"><button type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Surat Masuk</button></a>
+                    <a href="inputsuratkeluar.php"><button type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Surat Keluar</button></a>
                   </form>
                   <div class="x_content">
                              <?php
@@ -103,7 +100,7 @@ include "login/ceksession.php";
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th width="5%">ID </th>
+                          <th width="5%">No </th>
                           <th width="10%">Tanggal </th>
                           <th width="10%">No Surat</th>
                           <th width="20%">Isi </th>
@@ -116,9 +113,10 @@ include "login/ceksession.php";
                       
                       <tbody>
                             <?php
+                            $no=1;
                             while($data = mysqli_fetch_array($query1)){
                               echo'<tr>
-                              <td>	'. $data['id_suratkeluar'].'		</td>
+                              <td>	'. $no.'		</td>
                               <td>	'. $data['tgl_suratkeluar'].'	</td>
                               <td>	'. $data['no_suratkeluar'].'  		</td>
                               <td>	'. $data['isi_suratkeluar'].'		</td> 
@@ -130,6 +128,7 @@ include "login/ceksession.php";
                               <a href=editSuratKeluar.php?id_suratkeluar='.$data['id_suratkeluar'].'><button type="button" title="Edit" class="btn btn-success btn-xs"><i class="fa  fa-edit"></i></button></a>
                               <a onclick="return konfirmasi()" href="proses/proses_hapus.php?id_suratkeluar='.$data['id_suratkeluar'].'"><button type="button" title="Hapus" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
                               </tr>';
+                              $no++;
                             }
                             ?>
                       </tbody>

@@ -10,7 +10,7 @@ $query		=	mysqli_query($db,"SELECT * FROM tb_admin WHERE username_admin='$userna
 $data		=	$query->fetch_array();
 $jumlah=$query->num_rows;
 
-echo "<center><h3>$username, $password </h3></center>";
+// echo "<center><h3>$username, $password </h3></center>";
 
 
 if ($jumlah>0){

@@ -90,5 +90,29 @@ if (isset($_GET['no_notulen'])) {
 			<meta http-equiv='refresh' content='2;url=../datasuratSK.php'>";
 		}	
 	}
-}						
+}elseif (isset($_GET['id_penerima_sk'])) {
+	$id = $_GET['id_penerima_sk'];
+	$sql  		= "SELECT * FROM penerima_sk where id_penerima_sk='".$id."'";                        
+	$query  	= mysqli_query($db, $sql);
+	$data 		= mysqli_fetch_array($query);
+	$total		= mysqli_num_rows($query);
+	
+	$idpage=$data['id_sk'];
+
+	// cek hasil query
+	if ($total == 0) {
+    	echo '<script>window.history.back()</script>';
+	} else {
+		$sql1  		= "DELETE FROM penerima_sk WHERE id_penerima_sk='".$id."'";                        
+		$query  	= mysqli_query($db, $sql1);
+		if ($query){
+			echo "<Center><h2><br>Data telah Dihapus</h2></center>
+			<meta http-equiv='refresh' content='2;url=../datapenerimask.php?id_sk=$idpage''>";
+		}		else{
+		echo "<Center><h2><br>GAGAL MENGHAPUS<br>Silahkan Ulangi</h2></center>
+			<meta http-equiv='refresh' content='2;url=../datapenerimask.php?id_sk=$idpage''>";
+		}	
+	}
+}
+
 ?>   

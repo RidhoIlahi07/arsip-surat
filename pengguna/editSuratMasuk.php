@@ -1,8 +1,5 @@
+<?php session_start(); include "login/ceksession.php"; ?>
 <!DOCTYPE html>
-<?php
-session_start();
-include "login/ceksession.php";
-?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +8,7 @@ include "login/ceksession.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  
-    <title>Arsip Surat Desa Jurit Baru </title>
+    <title>Edit Surat Masuk</title>
 
     <!-- Bootstrap -->
     <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -80,6 +77,10 @@ include "login/ceksession.php";
                             $sql  		= "SELECT * FROM surat_masuk where id_suratmasuk='".$id."'";                        
                             $query  	= mysqli_query($db, $sql);
                             $data 		= mysqli_fetch_array($query);
+                            $tgl = $data['tgl_suratmasuk'];
+                            $tgl = date('m-d-Y H:i:s', strtotime($tgl));
+                            $tgl = $data['tgl_suratmasuk'];
+                            $tgl = date('m-d-Y', strtotime($tgl));
                             ?>
                       <input type=hidden name="id_suratmasuk" value="<?php echo $id;?>">
                       <div class="form-group">
@@ -90,18 +91,15 @@ include "login/ceksession.php";
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Surat <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tanggal Masuk <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                                <input value="<?php echo $data['tgl_suratmasuk'];?>" type="text" class="form-control has-feedback-left" id="single_cal3" id="tgl_suratmasuk" name="tgl_suratmasuk" placeholder="First Name" aria-describedby="inputSuccess2Status3" required="required" readonly="readonly">
-                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
-                            </div>
-                          </div>
-                        </fieldset>
+                        <div class='input-group date' id='myDatepicker4'>
+                            <input value="<?php echo "$tgl" ?>" type='text' id="tgl_suratmasuk" name="tgl_suratmasuk" required="required" class="form-control" required="required" readonly="readonly" />
+                            <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                         </div>
                       </div>
                       <div class="form-group">
@@ -156,7 +154,7 @@ include "login/ceksession.php";
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <a href="dataPengguna.php" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span> Batal</a>
+                          <a href="datasuratmasuk.php" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span> Batal</a>
                           <button type="submit" name="input" value="Simpan" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Simpan</button>
                         </div>
                       </div>
